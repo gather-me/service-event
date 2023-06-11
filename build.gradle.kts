@@ -17,6 +17,17 @@ extra["springCloudVersion"] = "2022.0.1"
 
 repositories {
 	mavenCentral()
+		maven {
+			name = "Gitlab"
+			url = uri("https://gitlab.com/api/v4/projects/46769478/packages/maven")
+			credentials(HttpHeaderCredentials::class.java) {
+				name = "Deploy-Token"
+				value = "n8av-ppL26gFP6XBi4Qf"
+			}
+			authentication {
+				create("header", HttpHeaderAuthentication::class)
+			}
+		}
 }
 
 dependencies {
@@ -38,7 +49,7 @@ dependencies {
 	implementation("org.postgresql:r2dbc-postgresql")
 
 	// Internal Libraries
-	implementation("com.odenizturker:r2dbc:0.0.4")
+	implementation("com.odenizturker:r2dbc:0.0.5")
 
 	// Swagger support
 	implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:2.0.4")

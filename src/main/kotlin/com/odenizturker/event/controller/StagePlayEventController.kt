@@ -57,6 +57,7 @@ class StagePlayEventController(
     ) {
         stagePlayEventService.create(userId, body)
     }
+
     @PostMapping("users/{userId}/enroll/events/stagePlay/{id}")
     suspend fun enroll(
         @PathVariable userId: Long,

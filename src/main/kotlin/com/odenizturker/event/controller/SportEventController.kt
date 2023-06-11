@@ -57,6 +57,7 @@ class SportEventController(
     ) {
         sportEventService.create(userId, body)
     }
+
     @PostMapping("users/{userId}/enroll/events/sport/{id}")
     suspend fun enroll(
         @PathVariable userId: Long,
@@ -72,6 +73,7 @@ class SportEventController(
     ): List<UserModel> {
         return sportEventService.participants(id, enrolled)
     }
+
     @PostMapping("users/{userId}/events/sport/{eventId}/invite")
     suspend fun invite(
         @PathVariable userId: Long,
