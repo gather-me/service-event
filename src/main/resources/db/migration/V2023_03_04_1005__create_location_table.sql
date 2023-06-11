@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS "location"
+(
+    id        BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    latitude  DECIMAL NOT NULL,
+    longitude DECIMAL NOT NULL
+);

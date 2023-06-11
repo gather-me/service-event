@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: event
+  r2dbc:
+    username: ${database.user}
+    password: ${database.password}
+    url: r2dbc:postgresql://${database.endpoint}/${database.name}?preparedStatementCacheQueries=0
+  flyway:
+    user: ${database.user}
+    password: ${database.password}
+    url: jdbc:postgresql://${database.migration.endpoint}/${database.name}
+    baselineOnMigrate: true
+    table: flyway_${spring.application.name}_schema_history
+
+gather:
+  server:
+    user:
+      url: "http://localhost:8090"
+    auth:
+      url: "http://localhost:9000"
+
+# Database
+database:
+  endpoint: ${DATABASE_ENDPOINT}
+  migration.endpoint: ${DATABASE_MIGRATION_ENDPOINT}
+  name: ${DATABASE_NAME}
+  password: ${DATABASE_PASSWORD}
+  user: ${DATABASE_USER}
+
+validation:
+  event:
+    min-title-length: 8
+    max-description-length: 256
+    min-capacity: 1
+    min-price: 0
+
+springdoc:
+  swagger-ui:
+    path: /
+
+server:
+  port: 8082
